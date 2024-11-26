@@ -13,7 +13,10 @@
 // limitations under the License.
 
 using Google.Api.Gax;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Storage.v1.Data;
 using System;
+using System.Net.Sockets;
 using static Google.Apis.Storage.v1.BucketsResource;
 using static Google.Apis.Storage.v1.BucketsResource.GetRequest;
 
@@ -52,6 +55,17 @@ namespace Google.Cloud.Storage.V1
         /// </summary>
         public RetryOptions RetryOptions { get; set; }
 
+        /// <summary>
+        /// Retrieves the generation for the bucket.
+        /// </summary>
+        public long? Generation { get; set; }
+
+        /// <summary>
+        /// (Optional) Set to true to retrieve a soft-deleted bucket .It will return the bucket metadata only if the bucket exists and is in a soft-deleted state.
+        /// The bucket generation must be set if soft_deleted is set to true
+        /// </summary>
+        public bool? SoftDeleted { get; set; }
+
         internal void ModifyRequest(GetRequest request)
         {
             if (IfMetagenerationMatch != null && IfMetagenerationNotMatch != null)
@@ -75,6 +89,15 @@ namespace Google.Cloud.Storage.V1
             {
                 request.UserProject = UserProject;
             }
+            if (Generation != null)
+            {
+                request.Generation = Generation;
+            }
+            if (SoftDeleted != null)
+            {
+               request.SoftDeleted = SoftDeleted;
+            }
+           
         }
     }
 }
