@@ -61,7 +61,11 @@ namespace Google.Cloud.Storage.V1
         /// Options to pass custom retry configuration for each API request.
         /// </summary>
         public RetryOptions RetryOptions { get; set; }
-
+        /// <summary>
+        /// (Optional) Set to true to retrieve a soft-deleted bucket .It will return the bucket metadata only if the bucket exists and is in a soft-deleted state.
+        /// The bucket generation must be set if soft_deleted is set to true
+        /// </summary>
+        public bool? SoftDeleted { get; set; }
         /// <summary>
         /// Modifies the specified request for all non-null properties of this options object.
         /// </summary>
@@ -87,6 +91,10 @@ namespace Google.Cloud.Storage.V1
             if (Fields != null)
             {
                 request.Fields = Fields;
+            }
+            if (SoftDeleted != null)
+            {
+                request.SoftDeleted = SoftDeleted;
             }
         }
     }
