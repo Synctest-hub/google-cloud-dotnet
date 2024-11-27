@@ -76,7 +76,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
         }
 
         [Fact]
-        // Fetches soft deleted buckets using the list bucket option soft delete true.
+        // Fetches soft deleted buckets using the list bucket option with soft delete true.
         public async Task ListSoftDeletedBuckets()
         {
             var actualBuckets = await _fixture.Client.ListBucketsAsync(_fixture.ProjectId, new ListBucketsOptions { SoftDeleted = true }).ToListAsync();

@@ -62,8 +62,7 @@ namespace Google.Cloud.Storage.V1
         /// </summary>
         public RetryOptions RetryOptions { get; set; }
         /// <summary>
-        /// (Optional) Set to true to retrieve a soft-deleted bucket .It will return the bucket metadata only if the bucket exists and is in a soft-deleted state.
-        /// The bucket generation must be set if soft_deleted is set to true
+        /// (Optional) Set to true to list a soft-deleted buckets. It will return the bucket's metadata only if buckets exist and are in a soft-deleted state.
         /// </summary>
         public bool? SoftDeleted { get; set; }
         /// <summary>

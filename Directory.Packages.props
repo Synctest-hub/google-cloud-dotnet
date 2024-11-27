@@ -1,5 +1,6 @@
 <Project>
   <ItemGroup>
+    <PackageVersion Include="Google.Apis.Storage.v1" Version="1.68.0.3604" />
     <PackageVersion Include="xunit" Version="2.9.2" />
     <PackageVersion Include="xunit.assert" Version="2.9.2" />
     <PackageVersion Include="xunit.core" Version="2.9.2" />
