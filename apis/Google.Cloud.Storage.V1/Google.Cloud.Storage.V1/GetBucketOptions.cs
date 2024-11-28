@@ -12,11 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using Google.Api.Gax;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Storage.v1.Data;
 using System;
-using System.Net.Sockets;
+using Google.Api.Gax;
 using static Google.Apis.Storage.v1.BucketsResource;
 using static Google.Apis.Storage.v1.BucketsResource.GetRequest;
 

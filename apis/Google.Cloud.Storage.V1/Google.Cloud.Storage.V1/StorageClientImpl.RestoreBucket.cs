@@ -11,14 +11,9 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
-using Google.Api.Gax;
-using Google.Apis.Storage.v1;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using Google.Apis.Storage.v1;
 using Bucket = Google.Apis.Storage.v1.Data.Bucket;
 
 namespace Google.Cloud.Storage.V1;

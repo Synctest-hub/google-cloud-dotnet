@@ -13,10 +13,6 @@
 // limitations under the License.
 
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -35,10 +31,22 @@ public class GetBucketTest
     public async Task GetBucketGeneration()
     {
         // We get bucket object using get bucket async method for bucket which is not soft deleted yet. 
-        var bucket = await _fixture.Client.GetBucketAsync(_fixture.SoftDeleteBucket, new GetBucketOptions { SoftDeleted = false });
-        await _fixture.Client.DeleteBucketAsync(_fixture.SoftDeleteBucket);
+        var bucket = await _fixture.Client.GetBucketAsync(_fixture.SoftDeleteBucketOne, new GetBucketOptions { SoftDeleted = false });
+        try
+        {
+            await _fixture.Client.DeleteBucketAsync(_fixture.SoftDeleteBucketOne);
+        }
+        catch (Exception)
+        {
+            // If bucket is not empty, we delete on a best effort basis.
+            foreach (var storageObject in _fixture.Client.ListObjects(_fixture.SoftDeleteBucketOne, ""))
+            {
+               await _fixture.Client.DeleteObjectAsync(_fixture.SoftDeleteBucketOne, storageObject.Name);
+            }
+            await _fixture.Client.DeleteBucketAsync(_fixture.SoftDeleteBucketOne);
+        }
         // We get softDeleted object using get bucket async method for soft deleted bucket. 
-        var softDeleted = await _fixture.Client.GetBucketAsync(_fixture.SoftDeleteBucket, new GetBucketOptions { SoftDeleted = true, Generation = bucket.Generation });
+        var softDeleted = await _fixture.Client.GetBucketAsync(_fixture.SoftDeleteBucketOne, new GetBucketOptions { SoftDeleted = true, Generation = bucket.Generation });
         Assert.NotNull(bucket.Generation);
         Assert.NotNull(softDeleted.Generation);
     }
@@ -47,11 +55,23 @@ public class GetBucketTest
     public async Task GetSoftDeletedBucket()
     {
         // We get bucket object using get bucket async method for soft delete bucket before deleting it. 
-        var bucket = await _fixture.Client.GetBucketAsync(_fixture.SoftDeleteBucket, new GetBucketOptions { SoftDeleted = false });
-        await _fixture.Client.DeleteBucketAsync(_fixture.SoftDeleteBucket);
+        var bucket = await _fixture.Client.GetBucketAsync(_fixture.SoftDeleteBucketTwo, new GetBucketOptions { SoftDeleted = false });
+        try
+        {
+            await _fixture.Client.DeleteBucketAsync(_fixture.SoftDeleteBucketTwo);
+        }
+        catch (Exception)
+        {
+            // If bucket is not empty, we delete on a best effort basis.
+            foreach (var storageObject in _fixture.Client.ListObjects(_fixture.SoftDeleteBucketTwo, ""))
+            {
+                await _fixture.Client.DeleteObjectAsync(_fixture.SoftDeleteBucketTwo, storageObject.Name);
+            }
+            await _fixture.Client.DeleteBucketAsync(_fixture.SoftDeleteBucketTwo);
+        }
 
         // And now we get softDeleted object using get bucket async method after deleting soft delete bucket.
-        var softDeleted = await _fixture.Client.GetBucketAsync(_fixture.SoftDeleteBucket, new GetBucketOptions { SoftDeleted = true, Generation = bucket.Generation });
+        var softDeleted = await _fixture.Client.GetBucketAsync(_fixture.SoftDeleteBucketTwo, new GetBucketOptions { SoftDeleted = true, Generation = bucket.Generation });
         Assert.NotNull(bucket.Generation);
         Assert.NotNull(softDeleted.Generation);
         Assert.NotNull(bucket.Name);
