@@ -1920,6 +1920,12 @@
                 "QueryReasoningEngine",
                 "QueryReasoningEngineAsync"
               ]
+            },
+            "StreamQueryReasoningEngine": {
+              "methods": [
+                "StreamQueryReasoningEngine",
+                "StreamQueryReasoningEngineAsync"
+              ]
             }
           }
         }
@@ -2317,6 +2323,18 @@
         "grpc": {
           "libraryClient": "VertexRagServiceClient",
           "rpcs": {
+            "AugmentPrompt": {
+              "methods": [
+                "AugmentPrompt",
+                "AugmentPromptAsync"
+              ]
+            },
+            "CorroborateContent": {
+              "methods": [
+                "CorroborateContent",
+                "CorroborateContentAsync"
+              ]
+            },
             "RetrieveContexts": {
               "methods": [
                 "RetrieveContexts",

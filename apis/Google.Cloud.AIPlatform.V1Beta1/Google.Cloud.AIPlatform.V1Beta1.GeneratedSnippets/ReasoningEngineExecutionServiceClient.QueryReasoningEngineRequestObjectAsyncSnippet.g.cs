@@ -40,6 +40,7 @@ namespace GoogleCSharpSnippets
             {
                 ReasoningEngineName = ReasoningEngineName.FromProjectLocationReasoningEngine("[PROJECT]", "[LOCATION]", "[REASONING_ENGINE]"),
                 Input = new Struct(),
+                ClassMethod = "",
             };
             // Make the request
             QueryReasoningEngineResponse response = await reasoningEngineExecutionServiceClient.QueryReasoningEngineAsync(request);
