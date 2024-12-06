@@ -84,7 +84,7 @@
     },
     {
       "id": "Google.Analytics.Data.V1Beta",
-      "version": "2.0.0-beta08",
+      "version": "2.0.0-beta09",
       "type": "grpc",
       "productName": "Google Analytics Data",
       "productUrl": "https://developers.google.com/analytics",
@@ -421,7 +421,7 @@
     },
     {
       "id": "Google.Cloud.ApiHub.V1",
-      "version": "1.0.0-beta02",
+      "version": "1.0.0",
       "type": "grpc",
       "productName": "API hub",
       "productUrl": "https://cloud.google.com/apigee/docs/apihub/what-is-api-hub",
@@ -555,7 +555,7 @@
     },
     {
       "id": "Google.Cloud.AppHub.V1",
-      "version": "1.0.0-beta03",
+      "version": "1.0.0",
       "type": "grpc",
       "productName": "App Hub",
       "productUrl": "https://cloud.google.com/app-hub/docs/overview",
@@ -565,9 +565,9 @@
         "management"
       ],
       "dependencies": {
-        "Google.Cloud.Iam.V1": "3.2.0",
-        "Google.Cloud.Location": "2.2.0",
-        "Google.LongRunning": "3.2.0"
+        "Google.Cloud.Iam.V1": "3.3.0",
+        "Google.Cloud.Location": "2.3.0",
+        "Google.LongRunning": "3.3.0"
       },
       "generator": "micro",
       "protoPath": "google/cloud/apphub/v1",
@@ -2686,7 +2686,7 @@
     },
     {
       "id": "Google.Cloud.GkeConnect.Gateway.V1",
-      "version": "1.0.0-beta02",
+      "version": "1.0.0",
       "type": "grpc",
       "productName": "Connect Gateway",
       "productUrl": "https://cloud.google.com/kubernetes-engine/enterprise/multicluster-management/gateway",
@@ -3502,7 +3502,7 @@
     },
     {
       "id": "Google.Cloud.NetworkServices.V1",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0",
       "type": "grpc",
       "productName": "Network Services",
       "productUrl": "https://cloud.google.com/products/networking",
@@ -3615,7 +3615,7 @@
     },
     {
       "id": "Google.Cloud.OracleDatabase.V1",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0",
       "type": "grpc",
       "productName": "Oracle Database@Google Cloud",
       "productUrl": "https://cloud.google.com/oracle/database/docs",
@@ -3813,7 +3813,7 @@
     },
     {
       "id": "Google.Cloud.Parallelstore.V1",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0",
       "type": "grpc",
       "productName": "Parallelstore",
       "productUrl": "https://cloud.google.com/parallelstore?hl=en",
@@ -3966,7 +3966,7 @@
     },
     {
       "id": "Google.Cloud.PrivilegedAccessManager.V1",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0",
       "type": "grpc",
       "productName": "Privileged Access Manager",
       "productUrl": "https://cloud.google.com/iam/docs/pam-overview",
@@ -4440,7 +4440,7 @@
     },
     {
       "id": "Google.Cloud.Security.PublicCA.V1",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0",
       "type": "grpc",
       "productName": "Public Certificate Authority",
       "productUrl": "https://cloud.google.com/certificate-manager/docs/public-ca",
@@ -4550,7 +4550,7 @@
     },
     {
       "id": "Google.Cloud.SecurityCenter.V2",
-      "version": "1.0.0-beta05",
+      "version": "1.0.0",
       "type": "grpc",
       "productName": "Security Command Center",
       "productUrl": "https://cloud.google.com/security-command-center/docs/reference/rest",
