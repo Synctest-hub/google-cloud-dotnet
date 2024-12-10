@@ -60,6 +60,21 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
         /// for 24 hours.
         /// </summary>
         public string SoftDeleteBucket => BucketPrefix + "-soft-delete";
+        /// <summary>
+        /// Name of a bucket which already exists, has no canned data, but has soft delete protection
+        /// for 24 hours.
+        /// </summary>
+        public string SoftDeleteBucketOne => BucketPrefix + "-soft-delete-one";
+        /// <summary>
+        /// Name of a bucket which already exists, has no canned data, but has soft delete protection
+        /// for 24 hours.
+        /// </summary>
+        public string SoftDeleteBucketTwo => BucketPrefix + "-soft-delete-two";
+        /// <summary>
+        /// Name of a bucket which already exists, has no canned data, but has soft delete protection
+        /// for 24 hours.
+        /// </summary>
+        public string SoftDeleteBucketThree => BucketPrefix + "-soft-delete-three";
 
         /// <summary>
         /// A small amount of content. Do not mutate the array.
@@ -167,6 +182,9 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
             CreateBucket(LabelsTestBucket, multiVersion: false);
             CreateBucket(InitiallyEmptyBucket, multiVersion: false);
             CreateBucket(SoftDeleteBucket, multiVersion: false, softDelete: true);
+            CreateBucket(SoftDeleteBucketOne, multiVersion: false, softDelete: true);
+            CreateBucket(SoftDeleteBucketTwo, multiVersion: false, softDelete: true);
+            CreateBucket(SoftDeleteBucketThree, multiVersion: false, softDelete: true);
 
             RequesterPaysClient = CreateRequesterPaysClient();
             if (RequesterPaysClient != null)

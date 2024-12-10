@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using Google.Apis.Storage.v1.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Google.Apis.Storage.v1.Data;
 using Xunit;
 
 namespace Google.Cloud.Storage.V1.IntegrationTests
@@ -75,6 +75,26 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
             }
         }
 
+        [Fact]
+        // Fetches soft deleted buckets using the list bucket option with soft delete true.
+        public async Task ListSoftDeletedBuckets()
+        {
+            var actualBuckets = await _fixture.Client.ListBucketsAsync(_fixture.ProjectId, new ListBucketsOptions { SoftDeleted = true }).ToListAsync();
+            
+            foreach (var bucket in actualBuckets)
+            {
+                // Check if list contains only soft deleted buckets created in storage fixture
+                if (bucket.Name.EndsWith("soft-delete"))
+                {
+                    Assert.NotNull(bucket.Name);
+                    Assert.NotNull(bucket.Generation);
+                    Assert.NotNull(bucket.SoftDeleteTimeDateTimeOffset);
+                    Assert.NotNull(bucket.HardDeleteTimeDateTimeOffset);
+                }
+
+            }
+        }
+
         // Fetches buckets using the given options in each possible way, validating that the expected bucket names are returned.
         private async Task AssertBuckets(ListBucketsOptions options, params string[] expectedBucketNames)
         {
@@ -90,5 +110,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
             var actualNames = actualBuckets.Select(b => b.Name).Where(name => name.StartsWith(_fixture.BucketPrefix)).OrderBy(x => x).ToList();
             Assert.Equal(expectedNames.OrderBy(x => x), actualNames);
         }
+
+       
     }
 }
